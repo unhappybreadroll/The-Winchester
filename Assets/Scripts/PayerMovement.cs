@@ -12,8 +12,11 @@ public class PayerMovement : MonoBehaviour
     //reference to the rigidbody that moves the player
     public Rigidbody2D rb;
 
+    public Animator animator;
+
     Vector2 movement;
 
+    
     
     // Update is called once per frame
     // dont use this because frame rate can change so need a fixed update
@@ -22,6 +25,10 @@ public class PayerMovement : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+        animator.SetFloat("Speed", movement.sqrMagnitude);
     }
 
     //works the same as update but is called a bunch of times per sec but does it on a fixed timer
